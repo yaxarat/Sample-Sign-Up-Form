@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "SignUpForm"
-include ':app'
+include(":app")
