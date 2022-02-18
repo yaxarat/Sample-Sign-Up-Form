@@ -25,5 +25,12 @@ data class UserProfileUseCases(
                 getUserProfile = getUserProfile
             )
         }
+
+        fun buildFake(database: UserDatabase): UserProfileUseCases {
+            return UserProfileUseCases(
+                insertUserProfile = InsertUserProfileImpl(database),
+                getUserProfile = GetUserProfileImpl(database)
+            )
+        }
     }
 }

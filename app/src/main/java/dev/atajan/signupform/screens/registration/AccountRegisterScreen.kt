@@ -13,10 +13,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import dev.atajan.signupform.R
+import dev.atajan.signupform.common.EMAIL_FIELD
+import dev.atajan.signupform.common.NAME_FIELD
+import dev.atajan.signupform.common.PASSWORD_FIELD
 import dev.atajan.signupform.common.UserInput
+import dev.atajan.signupform.common.WEBSITE_FIELD
 import dev.atajan.signupform.components.HeaderText
 import dev.atajan.signupform.components.ProgressButton
 import dev.atajan.signupform.components.UserTextField
@@ -64,6 +69,7 @@ fun AccountRegisterScreen(
                 },
 
                 modifier = Modifier
+                    .testTag(NAME_FIELD)
                     .padding(
                         top = paddingMedium,
                         bottom = paddingSmall
@@ -81,6 +87,7 @@ fun AccountRegisterScreen(
                 },
 
                 modifier = Modifier
+                    .testTag(EMAIL_FIELD)
                     .padding(bottom = paddingSmall)
                     .fillMaxWidth()
                     .height(textFieldHeight),
@@ -94,6 +101,7 @@ fun AccountRegisterScreen(
                     onIntention(Intention.UpdatePassword(password))
                 },
                 modifier = Modifier
+                    .testTag(PASSWORD_FIELD)
                     .padding(bottom = paddingSmall)
                     .fillMaxWidth()
                     .height(textFieldHeight),
@@ -108,6 +116,7 @@ fun AccountRegisterScreen(
                     onIntention(Intention.UpdateWebsite(website))
                 },
                 modifier = Modifier
+                    .testTag(WEBSITE_FIELD)
                     .fillMaxWidth()
                     .height(textFieldHeight),
                 softwareKeyboardController = softwareKeyboardController

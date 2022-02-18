@@ -25,7 +25,12 @@ class FakeUserDatabase : UserDatabase {
      * [Result] will contain [Throwable] if there was any error during the operation.
      */
     override suspend fun upsertUser(user: UserProfile): Result<UserProfile, Throwable> {
-        return if (operationSuccess) Ok(user) else Err(Exception())
+        return if (operationSuccess) {
+            userProfile = user
+            Ok(user)
+        } else {
+            Err(Exception())
+        }
     }
 
     fun givenOperationSuccess(isSuccess: Boolean = true) {

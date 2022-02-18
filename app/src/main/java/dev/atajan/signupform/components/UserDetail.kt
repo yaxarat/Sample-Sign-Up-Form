@@ -8,10 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.UriHandler
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
+import dev.atajan.signupform.common.USER_DETAIL_EMAIL
+import dev.atajan.signupform.common.USER_DETAIL_NAME
+import dev.atajan.signupform.common.USER_DETAIL_WEBSITE
 import dev.atajan.signupform.ui.theme.paddingSmall
 
 @Composable
@@ -32,6 +35,7 @@ fun UserDetail(
                 style = TextStyle(textDecoration = TextDecoration.Underline),
                 color = Color.Blue,
                 modifier = Modifier
+                    .testTag(USER_DETAIL_WEBSITE)
                     .clickable { onUrlClick(website) }
                     .padding(bottom = paddingSmall)
             )
@@ -39,10 +43,15 @@ fun UserDetail(
 
         Text(
             text = name,
-            modifier = Modifier.padding(bottom = paddingSmall)
+            modifier = Modifier
+                .testTag(USER_DETAIL_NAME)
+                .padding(bottom = paddingSmall)
         )
 
-        Text(text = email)
+        Text(
+            text = email,
+            modifier = Modifier.testTag(USER_DETAIL_EMAIL)
+        )
     }
 }
 

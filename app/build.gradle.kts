@@ -16,7 +16,7 @@ android {
         versionCode = AppConfig.versionCode
         versionName = AppConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "dev.atajan.signupform.flows.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -87,7 +87,9 @@ dependencies {
     androidTestImplementation(Hilt.hiltAndroidTesting)
     androidTestImplementation(Junit.junit4)
     androidTestImplementation(project(Modules.dataSourceTest))
+    androidTestImplementation(project(Modules.dataSourceLive))
 
+    kaptAndroidTest(Hilt.compiler)
 
     debugImplementation(Compose.uiTooling)
     debugImplementation(Compose.uiTestManifest)
