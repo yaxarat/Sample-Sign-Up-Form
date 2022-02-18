@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">SignUpForm</string>
+    <string name="app_name">The Sign Up</string>
+
+    <!--  Account Registration Screen  -->
+    <string name="account_registration_header_title">Profile Creation</string>
+    <string name="account_registration_header_body">Use the form below to submit your portfolio.
+An email and password are required.</string>
+    <string name="user_field_first_name">First Name</string>
+    <string name="user_field_email">Email Address</string>
+    <string name="user_field_password">Password</string>
+    <string name="user_field_website">Website</string>
+    <string name="button_submit">Submit</string>
+    <string name="password_field_error_text">* Password must be at least 8 characters long</string>
+    <string name="email_field_error_text">* Please enter a valid e-mail.</string>
+    <string name="website_field_error_text">* Please enter a valid url (ex: https://info.flipgrid.com) or leave this field blank.</string>
+
+    <!--  Confirmation Screen  -->
+    <string name="confirmation_header_title">Hello, %1$s!</string>
+    <string name="confirmation_header_title_no_name_provided">Hey there!</string>
+    <string name="confirmation_header_body">Your super-awesome portfolio has been successfully submitted! The details below will be public within your community!</string>
+    <string name="button_sign_in">Sign In</string>
 </resources>
