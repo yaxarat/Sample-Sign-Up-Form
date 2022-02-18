@@ -1,0 +1,21 @@
+CREATE TABLE userProfileEntity(
+    email TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    website TEXT NOT NULL,
+    password TEXT NOT NULL,
+    longLiveToken TEXT NOT NULL
+);
+
+upsertUser:
+INSERT OR REPLACE
+INTO userProfileEntity (
+    email,
+    name,
+    website,
+    password,
+    longLiveToken
+) VALUES (:email, :name, :website, :password, :longLiveToken);
+
+getUserWithEmail:
+SELECT * FROM userProfileEntity
+WHERE email = :email;

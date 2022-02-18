@@ -51,6 +51,12 @@ object Hilt {
     const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:$hiltVersion"
 }
 
+object Junit {
+    private const val junitVersion = "4.13.2"
+
+    const val junit4 = "junit:junit:$junitVersion"
+}
+
 object Kotlinx {
     private const val coroutinesCoreVersion = "1.6.0"
 
@@ -61,6 +67,12 @@ object Lifecycle {
     private const val lifecycleVersion = "2.4.1"
 
     const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+}
+
+object Mock {
+    private const val mockitoKotlinVersion = "2.2.0"
+
+    const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
 }
 
 object Navigation {
@@ -81,4 +93,6 @@ object SqlDelight {
     const val androidDriver = "com.squareup.sqldelight:android-driver:$sqlDelightVersion"
 
     const val plugin = "com.squareup.sqldelight"
+
+    const val testDriver = "com.squareup.sqldelight:sqlite-driver:$sqlDelightVersion"
 }
