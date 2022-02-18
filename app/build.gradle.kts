@@ -81,6 +81,7 @@ dependencies {
 
     testImplementation(Junit.junit4)
     testImplementation(project(Modules.dataSourceTest))
+    testImplementation(project(Modules.dataSourceLive))
 
     androidTestImplementation(AndroidXTest.runner)
     androidTestImplementation(Compose.uiTestJunit4)

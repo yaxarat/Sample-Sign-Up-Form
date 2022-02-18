@@ -84,9 +84,6 @@ class RegistrationToConfirmationFlowTest {
                     /**
                      * Registration screen
                      */
-                    /**
-                     * Registration screen
-                     */
                     composable(Screen.AccountRegistration.route) {
                         val accountRegistrationViewModel: AccountRegistrationViewModel = hiltViewModel()
                         AccountRegisterScreen(
@@ -101,10 +98,6 @@ class RegistrationToConfirmationFlowTest {
                             }
                         )
                     }
-
-                    /**
-                     * Confirmation Screen
-                     */
 
                     /**
                      * Confirmation Screen
