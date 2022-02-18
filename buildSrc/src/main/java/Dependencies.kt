@@ -7,10 +7,22 @@ object AppConfig {
     const val versionName = "1.0"
 }
 
+object Accompanist {
+    private const val accompanistVersion = "0.17.0"
+
+    const val systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion"
+}
+
 object AppCompat {
     private const val appCompatVersion = "1.4.1"
 
     const val appCompact = "androidx.appcompat:appcompat:$appCompatVersion"
+}
+
+object AndroidXTest {
+    private const val version = "1.3.0"
+
+    const val runner = "androidx.test:runner:$version"
 }
 
 object Build {

@@ -8,14 +8,18 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
+import dev.atajan.signupform.common.LOADING_INDICATOR
 
 @Composable
 fun FullScreenCircularLoadingIndicator(modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = modifier.fillMaxSize()
+        modifier = modifier
+            .testTag(LOADING_INDICATOR)
+            .fillMaxSize()
     ) {
         CircularProgressIndicator(color = MaterialTheme.colors.primary)
     }

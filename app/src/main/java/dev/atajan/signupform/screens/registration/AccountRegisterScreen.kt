@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import dev.atajan.signupform.R
 import dev.atajan.signupform.common.UserInput
 import dev.atajan.signupform.components.HeaderText
+import dev.atajan.signupform.components.ProgressButton
 import dev.atajan.signupform.components.UserTextField
 import dev.atajan.signupform.components.ValidateableUserTextField
 import dev.atajan.signupform.screens.registration.AccountRegistrationViewModel.Intention
@@ -113,25 +114,24 @@ fun AccountRegisterScreen(
             )
         }
 
-        Button(
-            onClick = {
+        ProgressButton(
+            buttonText = stringResource(id = R.string.button_submit),
+            onCLick = {
                 onIntention(
                     Intention.SaveUserInformation {
                         navigateToConfirmationScreen(screenState.email.value)
                     }
                 )
             },
-            enabled = true,
+            enabled = screenState.let { state ->
+                state.email.value.trim().isNotEmpty() &&
+                        state.password.value.trim().isNotEmpty()
+            },
             modifier = Modifier
                 .padding(bottom = paddingLarge)
                 .fillMaxWidth()
                 .height(buttonHeight)
-        ) {
-            Text(
-                text = stringResource(id = R.string.button_submit),
-                style = MaterialTheme.typography.button
-            )
-        }
+        )
     }
 }
 

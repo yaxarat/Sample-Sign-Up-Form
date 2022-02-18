@@ -23,6 +23,13 @@ constructor(private val userProfileUseCases: UserProfileUseCases) : ViewModel() 
 
     private val logger = ClassLogger(this.javaClass.name)
 
+    /**
+     * MVI/Redux architecture set up:
+     * Intent is emitted to actor, which is then reduced in reducer, which returns a new state.
+     *
+     *  user action -> [onIntention -> actor -> reducer -> newState] -> user
+     */
+
     var state = mutableStateOf(State.initialState())
         private set
 
@@ -54,6 +61,10 @@ constructor(private val userProfileUseCases: UserProfileUseCases) : ViewModel() 
             }
         }
     }
+
+    /**
+     * Intent actions
+     */
 
     private fun attemptSaveUserInformation(state: State, onSaveSuccess: () -> Unit) {
         val fieldsAreValid = validateFields(
@@ -143,6 +154,10 @@ constructor(private val userProfileUseCases: UserProfileUseCases) : ViewModel() 
     private fun String.isPasswordValid(): Boolean {
         return this.length >= 8
     }
+
+    /**
+     * State holders
+     */
 
     data class State(
         val name: String,

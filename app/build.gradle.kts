@@ -62,6 +62,7 @@ kotlin.sourceSets.all {
 }
 
 dependencies {
+    implementation(Accompanist.systemuicontroller)
     implementation(Compose.activityCompose)
     implementation(Compose.material)
     implementation(Compose.ui)
@@ -79,10 +80,14 @@ dependencies {
     kapt(Hilt.compiler)
 
     testImplementation(Junit.junit4)
+    testImplementation(project(Modules.dataSourceTest))
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation(AndroidXTest.runner)
     androidTestImplementation(Compose.uiTestJunit4)
+    androidTestImplementation(Hilt.hiltAndroidTesting)
+    androidTestImplementation(Junit.junit4)
+    androidTestImplementation(project(Modules.dataSourceTest))
+
 
     debugImplementation(Compose.uiTooling)
     debugImplementation(Compose.uiTestManifest)

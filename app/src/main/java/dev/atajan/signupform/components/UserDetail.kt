@@ -9,6 +9,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.UriHandler
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import dev.atajan.signupform.ui.theme.paddingSmall
 
@@ -24,13 +26,16 @@ fun UserDetail(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
-        Text(
-            text = website,
-            color = Color.Blue,
-            modifier = Modifier
-                .clickable { onUrlClick(website) }
-                .padding(bottom = paddingSmall)
-        )
+        if (website.isNotEmpty()) {
+            Text(
+                text = website,
+                style = TextStyle(textDecoration = TextDecoration.Underline),
+                color = Color.Blue,
+                modifier = Modifier
+                    .clickable { onUrlClick(website) }
+                    .padding(bottom = paddingSmall)
+            )
+        }
 
         Text(
             text = name,

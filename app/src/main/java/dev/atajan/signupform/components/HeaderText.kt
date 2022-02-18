@@ -7,8 +7,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import dev.atajan.signupform.common.HEADER_TEXT
 import dev.atajan.signupform.ui.theme.SignUpFormTheme
 import dev.atajan.signupform.ui.theme.paddingSmall
 
@@ -20,7 +22,7 @@ fun HeaderText(
 ) {
     Column(
         horizontalAlignment = Alignment.Start,
-        modifier = modifier
+        modifier = modifier.testTag(HEADER_TEXT)
     ) {
         Text(
             text = headerTitle,

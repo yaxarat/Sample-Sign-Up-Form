@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import dev.atajan.signupform.R
 import dev.atajan.signupform.components.FullScreenCircularLoadingIndicator
 import dev.atajan.signupform.components.HeaderText
+import dev.atajan.signupform.components.ProgressButton
 import dev.atajan.signupform.components.UserDetail
 import dev.atajan.signupform.screens.confirmation.ConfirmationViewModel.Intention
 import dev.atajan.signupform.screens.confirmation.ConfirmationViewModel.State
@@ -70,21 +71,15 @@ fun ConfirmationScreen(
                 )
             }
 
-            Button(
-                onClick = {
-
-                },
+            ProgressButton(
+                buttonText = stringResource(id = R.string.button_sign_in),
+                onCLick = {  },
                 enabled = true,
                 modifier = Modifier
                     .padding(bottom = paddingLarge)
                     .fillMaxWidth()
                     .height(buttonHeight)
-            ) {
-                Text(
-                    text = stringResource(id = R.string.button_sign_in),
-                    style = MaterialTheme.typography.button
-                )
-            }
+            )
         }
     }
 }

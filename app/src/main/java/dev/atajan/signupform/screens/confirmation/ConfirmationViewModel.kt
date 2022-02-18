@@ -22,6 +22,13 @@ class ConfirmationViewModel @Inject constructor(
 
     val logger = ClassLogger(this.javaClass.name)
 
+    /**
+     * MVI/Redux architecture set up:
+     * Intent is emitted to actor, which is then reduced in reducer, which returns a new state.
+     *
+     *  user action -> [onIntention -> actor -> reducer -> newState] -> user
+     */
+
     var state = mutableStateOf(State.initialState())
         private set
 
@@ -70,6 +77,10 @@ class ConfirmationViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Intent actions
+     */
+
     private fun getUserWithEmail(email: String) {
         viewModelScope.launch {
             userProfileUseCases.getUserProfile(email)
@@ -89,6 +100,10 @@ class ConfirmationViewModel @Inject constructor(
                 )
         }
     }
+
+    /**
+     * State holders
+     */
 
     data class State(
         val name: String,
