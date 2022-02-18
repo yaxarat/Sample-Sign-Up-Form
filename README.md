@@ -85,6 +85,8 @@ Having these modular design also helps with testing and controlling code access 
 
 Also, test the state, not the implementation. So I always preferred on creating fakes rather than using mocking library to mocks. Data source and use-cases are intentionally designed to make this easier.
 
+For UI tests, similar can be said thanks to how easy it is to write them thanks to compose and dagger. You can see my examples in app's androidTest package.
+
 ## Architecture
 
 Ever since the debut of Jetpack compose, I've preferred using MVI architecture. Declarative and very state based nature of Jetpack compose and the immutable and unidirectional programming MVI allows matches very nicely.
@@ -103,4 +105,6 @@ You may notice there is a `longLiveToken` in user domain object. It was meant to
 
 Database also can use more work as in the insert operation is kind of rough and overwrites any entry. Ideally we want distinct operations with clear happy/unhappy cases so we can properly handle all situations.
 
-Testing - there can always be more testing. UI/UX/AX - there is no accessibility to speak of at the moment and I'm sure the design can use some help as well. For a prod app, we want to make sure the app is accessible to all users and ideally have testing for talkback and other AX services.
+Testing - there can always be more testing. With more time, I would have liked to add through test for all modules, and their implementations.
+
+UI/UX/AX - there is no accessibility to speak of at the moment and I'm sure the design can use some help as well. For a prod app, we want to make sure the app is accessible to all users and ideally have testing for talkback and other AX services. We also want to keep in mind screen rotations and various screen dimensions android ecosystem offers.
