@@ -69,12 +69,6 @@ object Lifecycle {
     const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
 }
 
-object Mock {
-    private const val mockitoKotlinVersion = "2.2.0"
-
-    const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
-}
-
 object Navigation {
     private const val navigationVersion = "2.4.1"
     const val navigationCompose = "androidx.navigation:navigation-compose:$navigationVersion"

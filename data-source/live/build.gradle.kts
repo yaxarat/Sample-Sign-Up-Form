@@ -13,8 +13,6 @@ dependencies {
     "implementation"(project(Modules.common))
     "implementation"(project(Modules.domain))
 
-    "testImplementation"(Junit.junit4)
-    "testImplementation"(Mock.mockitoKotlin)
     "testImplementation"(SqlDelight.testDriver)
 }
 

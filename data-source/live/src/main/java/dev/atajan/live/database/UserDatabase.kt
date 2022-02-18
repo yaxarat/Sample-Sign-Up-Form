@@ -17,6 +17,10 @@ interface UserDatabase {
      */
     suspend fun getUserWithEmail(email: String): Result<UserProfile, Throwable>
 
+    /**
+     * Returns [UserProfile] initially passed wrapped in [Result] if the upsert operation succeeds.
+     * [Result] will contain [Throwable] if there was any error during the operation.
+     */
     suspend fun upsertUser(user: UserProfile): Result<UserProfile, Throwable>
 
     companion object {
