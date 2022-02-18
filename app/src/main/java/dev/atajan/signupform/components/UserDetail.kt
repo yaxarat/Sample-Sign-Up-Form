@@ -41,12 +41,14 @@ fun UserDetail(
             )
         }
 
-        Text(
-            text = name,
-            modifier = Modifier
-                .testTag(USER_DETAIL_NAME)
-                .padding(bottom = paddingSmall)
-        )
+        if (name.isNotEmpty()) {
+            Text(
+                text = name,
+                modifier = Modifier
+                    .testTag(USER_DETAIL_NAME)
+                    .padding(bottom = paddingSmall)
+            )
+        }
 
         Text(
             text = email,
