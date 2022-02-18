@@ -6,15 +6,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import dev.atajan.common.ClassLogger
 import dev.atajan.signupform.R
 import dev.atajan.signupform.components.FullScreenCircularLoadingIndicator
 import dev.atajan.signupform.components.HeaderText
@@ -33,6 +31,8 @@ fun ConfirmationScreen(
 ) {
 
     val uriHandler = LocalUriHandler.current
+
+    val logger = ClassLogger("ConfirmationScreen")
 
     if (screenState.isLoading) {
         FullScreenCircularLoadingIndicator()
@@ -64,7 +64,14 @@ fun ConfirmationScreen(
                     website = screenState.website,
                     name = screenState.name,
                     email = screenState.email,
-                    onUrlClick = { uriHandler.openUri(it) },
+                    onUrlClick = {
+                        try {
+                            logger.logDebug("URL clicked")
+                            uriHandler.openUri(it)
+                        } catch (exception: Exception) {
+                            logger.logError("exception occurred on URL click: $exception")
+                        }
+                    },
                     modifier = Modifier
                         .padding(top = paddingSmall)
                         .fillMaxWidth()

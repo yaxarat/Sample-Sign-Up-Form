@@ -13,12 +13,6 @@ object Accompanist {
     const val systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion"
 }
 
-object AppCompat {
-    private const val appCompatVersion = "1.4.1"
-
-    const val appCompact = "androidx.appcompat:appcompat:$appCompatVersion"
-}
-
 object AndroidXTest {
     private const val version = "1.3.0"
 

@@ -73,13 +73,19 @@ constructor(private val userProfileUseCases: UserProfileUseCases) : ViewModel() 
             website = state.website.value
         )
 
+        val webAddress = if (!state.website.value.startsWith("https://")) {
+            "https://" + state.website.value
+        } else {
+            state.website.value
+        }
+
         if (fieldsAreValid) {
             viewModelScope.launch {
                 userProfileUseCases.insertUserProfile.invoke(
                     UserProfile(
                         name = state.name,
                         email = state.email.value,
-                        website = state.website.value,
+                        website = webAddress,
                         password = state.password.value, // NEVER DO THIS IN A REAL PROD APP
                         longLiveToken = ""
                     )
