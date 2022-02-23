@@ -67,16 +67,28 @@ constructor(private val userProfileUseCases: UserProfileUseCases) : ViewModel() 
      */
 
     private fun attemptSaveUserInformation(state: State, onSaveSuccess: () -> Unit) {
+        val email = state.email.value.trim()
+        val password = state.password.value
+        val url = state.website.value.trim()
+
         val fieldsAreValid = validateFields(
-            email = state.email.value,
-            password = state.password.value,
-            website = state.website.value
+            email = email,
+            password = password,
+            website = url
         )
 
-        val webAddress = if (!state.website.value.startsWith("https://")) {
-            "https://" + state.website.value
-        } else {
-            state.website.value
+        val formattedUrl = url.let {
+            when {
+                ((it.isNotEmpty() && !it.startsWith("https://"))) -> {
+                    "https://$it"
+                }
+                it.isEmpty() -> {
+                    ""
+                }
+                else -> {
+                    it
+                }
+            }
         }
 
         if (fieldsAreValid) {
@@ -85,7 +97,7 @@ constructor(private val userProfileUseCases: UserProfileUseCases) : ViewModel() 
                     UserProfile(
                         name = state.name,
                         email = state.email.value,
-                        website = webAddress,
+                        website = formattedUrl,
                         password = state.password.value, // NEVER DO THIS IN A REAL PROD APP
                         longLiveToken = ""
                     )
@@ -107,7 +119,7 @@ constructor(private val userProfileUseCases: UserProfileUseCases) : ViewModel() 
         password: String,
         website: String
     ): Boolean {
-        val validEmail = email.trim().isEmailValid()
+        val validEmail = email.isEmailValid()
             .also { valid ->
                 if (!valid) {
                     onIntention(
@@ -118,7 +130,7 @@ constructor(private val userProfileUseCases: UserProfileUseCases) : ViewModel() 
                 }
             }
 
-        val validPassword = password.trim().isPasswordValid()
+        val validPassword = password.isPasswordValid()
             .also { valid ->
                 if (!valid) {
                     onIntention(
@@ -130,7 +142,6 @@ constructor(private val userProfileUseCases: UserProfileUseCases) : ViewModel() 
             }
 
         val validWebUrlIfEntered = website
-            .trim()
             .isWebUrlValid()
             .also { valid ->
                 if (!valid) {
